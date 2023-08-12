@@ -1,0 +1,39 @@
+{
+	"name": "@acme/vite-tsconfig-per-project",
+	"version": "0.0.0",
+	"private": true,
+	"author": "Christopher Haws",
+	"type": "module",
+	"files": [],
+	"packageManager": "pnpm@8.6.12",
+	"engines": {
+		"node": ">=18",
+		"pnpm": ">=8"
+	},
+	"scripts": {
+		"preinstall": "npx only-allow pnpm",
+		"dev": "pnpm -r run dev",
+		"build": "typecheck && pnpm -r run build",
+		"build:ts": "pnpm exec tsc --build --verbose",
+		"lint": "pnpm -r run lint",
+		"lint:fix": "pnpm lint --fix && pnpm format",
+		"format": "prettier --write .",
+		"typecheck": "tsc --build  --verbose --pretty",
+		"clean": "pnpm -r run clean",
+		"clean:store": "pnpm store status && pnpm store prune && pnpm store status",
+		"test": "vitest",
+		"test:ci": "vitest --run",
+		"test:coverage": "vitest --coverage",
+		"test:ui": "vitest --ui",
+		"frontend": "pnpm --filter @acme/frontend",
+		"ui": "pnpm --filter @acme/ui",
+		"scripts": "pnpm --filter @acme/scripts"
+	},
+	"dependencies": {
+		"@acme/tsconfig": "workspace:*",
+		"cross-env": "^7.0.3",
+		"prettier": "^3.0.0",
+		"rimraf": "^5.0.1",
+		"typescript": "^5.1.6"
+	}
+}

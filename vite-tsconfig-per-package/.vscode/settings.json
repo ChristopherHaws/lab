@@ -1,0 +1,192 @@
+{
+	"[editorconfig]": {
+		"editor.defaultFormatter": "EditorConfig.EditorConfig"
+	},
+	"[html]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[javascript]": {
+		"editor.autoClosingBrackets": "languageDefined",
+		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		"editor.suggest.showWords": true
+	},
+	"[javascriptreact]": {
+		"editor.autoClosingBrackets": "languageDefined",
+		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		"editor.suggest.showWords": true
+	},
+	"[json]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[jsonc]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[markdown]": {
+		"editor.defaultFormatter": "yzhang.markdown-all-in-one",
+		"editor.wordWrap": "bounded"
+	},
+	"[typescript]": {
+		"editor.autoClosingBrackets": "languageDefined",
+		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		"editor.suggest.showWords": true
+	},
+	"[typescriptreact]": {
+		"editor.autoClosingBrackets": "languageDefined",
+		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		"editor.suggest.showWords": true
+	},
+	"[yaml]": {
+		"editor.autoIndent": "advanced",
+		"editor.insertSpaces": true,
+		"editor.tabSize": 2,
+		"gitlens.codeLens.scopes": ["document"]
+	},
+	"editor.codeActionsOnSave": {
+		//"source.fixAll": true
+		"source.sortImports": true
+	},
+	"editor.detectIndentation": false,
+	"editor.formatOnPaste": false,
+	"editor.formatOnSave": true,
+	"editor.formatOnSaveMode": "file",
+	"editor.formatOnType": false,
+	"editor.linkedEditing": true,
+	"editor.suggest.showSnippets": false,
+	"editor.suggest.showWords": false,
+	"editor.wrappingIndent": "deepIndent",
+	"errorLens.enabledDiagnosticLevels": ["error"],
+	"errorLens.fontSize": "85%",
+	"errorLens.gutterIconSize": "auto",
+	/**************************************************************************
+	 * ESLint settings See https://github.com/microsoft/vscode-eslint
+	 **************************************************************************/
+	"eslint.enable": true,
+	"eslint.ignoreUntitled": true,
+	"eslint.lintTask.enable": true,
+	"eslint.lintTask.options": ". --cache",
+	//"eslint.experimental.useFlatConfig": true,
+	//"eslint.format.enable": true,
+	"eslint.run": "onType",
+	"eslint.useESLintClass": true,
+	"eslint.validate": [
+		"javascript",
+		"javascriptreact",
+		"typescript",
+		"typescriptreact"
+		// "html", "markdown", "less", "scss"
+	],
+	"explorer.excludeGitIgnore": false,
+	"files.associations": {
+		// Most of the tools support comments in JSON files. If a specific file doesn't support it,
+		// explicitly add globs here for the file(s).
+		"**/*.json": "jsonc",
+		"**/.npmrc-*": "properties",
+		"**/package.json": "json",
+		"*.editorconfig": "editorconfig"
+	},
+	// Feel free to set any of these to false locally, but make sure they are
+	// all set to true before committing.
+	"files.exclude": {
+		// OS
+		"**/.DS_Store": true,
+		"**/Thumbs.db": true,
+
+		// Git
+		// These are seperate because we never want to see the git folder but
+		// we do want to see the .gitignore/.gitattributes files
+		"**/.git": true,
+		"**/.git*": false,
+
+		// IDE
+		".idea": true,
+		".vs": true,
+
+		// Node/PNPM
+		"**/.npmrc": false,
+		"**/node_modules": false,
+		"**/pnpm-lock.yaml": false,
+
+		// Build Output
+		"**/*.tsbuildinfo": true,
+		"**/.swc": true,
+		"**/dist": true,
+
+		// Config
+		"**/.editorconfig": false,
+		"**/.prettier*": false,
+	},
+	"git.autofetch": true,
+	"git.branchProtection": ["main", "release/*"],
+	"git.enableSmartCommit": true,
+	"git.inputValidationLength": 160,
+	"git.inputValidationSubjectLength": null,
+	"javascript.format.semicolons": "insert",
+	"javascript.preferences.importModuleSpecifier": "project-relative",
+	"javascript.preferences.jsxAttributeCompletionStyle": "none",
+	"javascript.preferences.quoteStyle": "single",
+	"javascript.preferences.useAliasesForRenames": false,
+	"javascript.preferGoToSourceDefinition": true,
+	"javascript.suggest.completeFunctionCalls": true,
+	"javascript.suggest.includeAutomaticOptionalChainCompletions": false,
+	"javascript.updateImportsOnFileMove.enabled": "prompt",
+	"json.sortOnSave.enable": false,
+	"npm-intellisense.packageSubfoldersIntellisense": true,
+	"npm.packageManager": "pnpm",
+	"rewrap.autoWrap.enabled": true,
+	// Disabled because it wraps code comments...
+	"rewrap.onSave": false,
+	"rewrap.wrappingColumn": 100,
+	"search.useGlobalIgnoreFiles": true,
+	"search.useParentIgnoreFiles": true,
+	"testExplorer.useNativeTesting": true,
+	"todo-tree.highlights.defaultHighlight": {
+		"background": "#000000",
+		"fontWeight": "900",
+		"opacity": 0
+	},
+	"todohighlight.defaultStyle": {
+		"backgroundColor": "editor.background"
+	},
+	// https://code.visualstudio.com/api/references/theme-color
+	"todohighlight.keywords": [
+		{
+			"backgroundColor": "editor.background",
+			"color": "yellow",
+			"text": "TODO:"
+		},
+		{
+			"backgroundColor": "editor.background",
+			"color": "orange",
+			"text": "FIXME:"
+		},
+		{
+			"backgroundColor": "editor.background",
+			"color": "red",
+			"text": "HACK:"
+		},
+		{
+			"backgroundColor": "editor.background",
+			"color": "#00FF00",
+			"text": "HINT:"
+		}
+	],
+	// Just in case someone has it installed
+	"tslint.enable": false,
+	"typescript.enablePromptUseWorkspaceTsdk": true,
+	"typescript.experimental.tsserver.web.enableProjectWideIntellisense": true,
+	"typescript.format.semicolons": "insert",
+	"typescript.preferences.importModuleSpecifier": "project-relative",
+	"typescript.preferences.jsxAttributeCompletionStyle": "none",
+	"typescript.preferences.quoteStyle": "single",
+	"typescript.preferences.useAliasesForRenames": false,
+	"typescript.preferGoToSourceDefinition": true,
+	"typescript.suggest.completeFunctionCalls": true,
+	"typescript.suggest.includeAutomaticOptionalChainCompletions": false,
+	"typescript.tsdk": "./node_modules/typescript/lib",
+	"typescript.tsserver.experimental.enableProjectDiagnostics": true,
+	"typescript.updateImportsOnFileMove.enabled": "always",
+	"vitest.commandLine": "pnpm test",
+	"vitest.enable": true,
+	"xml.foldings.includeClosingTagInFold": true,
+	"xml.validation.resolveExternalEntities": true
+}

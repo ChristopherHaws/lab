@@ -1,0 +1,13 @@
+{
+	"name": "@acme/tsconfig",
+	"description": "Shared tsconfig files",
+	"version": "0.0.0",
+	"private": true,
+	"files": [
+		"*.json"
+	],
+	"dependencies": {
+		"@tsconfig/recommended": "^1.0.2",
+		"@tsconfig/vite-react": "^2.0.0"
+	}
+}

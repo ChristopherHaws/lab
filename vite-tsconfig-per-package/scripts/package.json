@@ -1,0 +1,12 @@
+{
+	"name": "@acme/scripts",
+	"version": "0.0.0",
+	"type": "module",
+	"scripts": {
+		"main": "ts-node --esm src/main.mts"
+	},
+	"dependencies": {
+		"ts-node": "^10.9.1",
+		"typescript": "^5.1.6"
+	}
+}
