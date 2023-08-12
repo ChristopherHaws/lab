@@ -113,7 +113,7 @@
 
 		// Config
 		"**/.editorconfig": false,
-		"**/.prettier*": false,
+		"**/.prettier*": false
 	},
 	"git.autofetch": true,
 	"git.branchProtection": ["main", "release/*"],
@@ -148,6 +148,7 @@
 		"backgroundColor": "editor.background"
 	},
 	// https://code.visualstudio.com/api/references/theme-color
+	//TODO: Hide todo items from the scrollbar or change the colors
 	"todohighlight.keywords": [
 		{
 			"backgroundColor": "editor.background",
