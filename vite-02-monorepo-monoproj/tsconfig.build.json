@@ -1,0 +1,31 @@
+{
+	"$schema": "https://json.schemastore.org/tsconfig",
+	"display": "@acme/workspace/tsconfig.build.json",
+	"extends": "@acme/tsconfig/vite.build.json",
+	/**
+	 * TypeScript uses a pattern known as "glob-like" syntax for specifying file
+	 * patterns. It is similar to the typical globbing patterns but with some
+	 * specific rules and restrictions.
+	 *
+	 * - "*": Matches zero or more characters (excluding directory separators)
+	 * - "?": Matches any one character (excluding directory separators)
+	 * - "**": Matches zero or more directories in recursive directory searches
+	 * - "[abc]": Matches any one character in the set {a, b, c}
+	 */
+	"include": [
+		"apps/*/package.json",
+		"apps/*/vite.config.ts",
+		"apps/*/vitest.config.ts",
+		"packages/*/package.json",
+		"packages/*/vite.config.ts",
+		"packages/*/vitest.config.ts"
+	],
+	"compilerOptions": {
+		"baseUrl": "."
+		// Disabled so I can see if typescript can infer the root
+		//"rootDir": ".",
+		// "paths": {
+		// 	"@acme/*": ["apps/*/", "packages/*/"]
+		// }
+	}
+}

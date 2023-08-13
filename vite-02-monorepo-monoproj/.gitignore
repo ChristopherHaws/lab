@@ -1,0 +1,16 @@
+# Logs
+logs
+*.log
+*-debug.log*
+
+# PNPM
+node_modules
+
+# OS Files
+.DS_Store
+Thumbs.db
+*.local
+
+# Project-specific files
+dist
+dist-ssr

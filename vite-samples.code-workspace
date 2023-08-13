@@ -21,6 +21,53 @@
 		"files.exclude": {
 			"vite-01-monorepo-multiproj": true,
 			"vite-02-monorepo-monoproj": true
-		}
+		},
+		"files.associations": {
+			// Most of the tools support comments in JSON files. If a specific file
+			// doesn't support comments, explicitly add a config here for the file.
+			"**/*.json": "jsonc",
+			"**/.npmrc-*": "properties",
+			"**/package.json": "json",
+			"*.editorconfig": "editorconfig"
+		},
+		"git.inputValidationLength": 160,
+		"git.inputValidationSubjectLength": null,
+		"errorLens.enabledDiagnosticLevels": [
+			"error"
+		],
+		"errorLens.fontSize": "85%",
+		"errorLens.gutterIconSize": "auto",
+		"todo-tree.highlights.defaultHighlight": {
+			"background": "#000000",
+			"fontWeight": "900",
+			"opacity": 0
+		},
+		"todohighlight.defaultStyle": {
+			"backgroundColor": "editor.background"
+		},
+		// https://code.visualstudio.com/api/references/theme-color
+		//TODO: Hide todo items from the scrollbar or change the colors
+		"todohighlight.keywords": [
+			{
+				"backgroundColor": "editor.background",
+				"color": "yellow",
+				"text": "TODO:"
+			},
+			{
+				"backgroundColor": "editor.background",
+				"color": "orange",
+				"text": "FIXME:"
+			},
+			{
+				"backgroundColor": "editor.background",
+				"color": "red",
+				"text": "HACK:"
+			},
+			{
+				"backgroundColor": "editor.background",
+				"color": "#00FF00",
+				"text": "HINT:"
+			}
+		],
 	}
 }

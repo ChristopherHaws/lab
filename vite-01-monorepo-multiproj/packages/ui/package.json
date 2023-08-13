@@ -3,15 +3,23 @@
 	"private": true,
 	"version": "0.0.0",
 	"type": "module",
-	"module": "./dist/index.js",
-	"types": "./dist/index.d.ts",
 	"exports": {
-		".": "./dist/index.js",
+		".": "./src/index.ts",
 		"./package.json": "./package.json"
+	},
+	"//00": "Overrides main, typings, and exports at runtime. This allows vscode to use",
+	"//01": "the 'live' files for typings without the need to build the project first",
+	"publishConfig": {
+		"main": "dist/index.js",
+		"typings": "dist/index.d.ts",
+		"exports": {
+			".": "./dist/index.js",
+			"./package.json": "./package.json"
+		}
 	},
 	"scripts": {
 		"build": "tsc --noEmit && vite build",
-		"build:vite:diag": "vite build --debug --logLevel info --force",
+		"build:diag": "vite build --debug --logLevel info --force",
 		"lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
 		"clean": "rimraf dist node_modules/.vite"
 	},
