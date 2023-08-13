@@ -110,6 +110,7 @@
 		"**/*.tsbuildinfo": true,
 		"**/.swc": true,
 		"**/dist": false,
+		"**/*timestamp-*.mjs": true,
 
 		// Config
 		"**/.editorconfig": true,
@@ -136,7 +137,7 @@
 	"rewrap.autoWrap.enabled": true,
 	// Disabled because it wraps code comments...
 	"rewrap.onSave": false,
-	"rewrap.wrappingColumn": 100,
+	"rewrap.wrappingColumn": 80,
 	"search.useGlobalIgnoreFiles": true,
 	"search.useParentIgnoreFiles": true,
 	"testExplorer.useNativeTesting": true,

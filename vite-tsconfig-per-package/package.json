@@ -12,7 +12,7 @@
 	},
 	"scripts": {
 		"preinstall": "npx only-allow pnpm",
-		"dev": "pnpm -r run dev",
+		"dev": "pnpm -r --parallel run dev",
 		"build": "tsc --noEmit && pnpm -r run build",
 		"build:ts": "pnpm exec tsc --build --verbose",
 		"lint": "pnpm -r run lint",

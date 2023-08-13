@@ -5,64 +5,63 @@ import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
 
+import packageJson from './package.json';
+
 const currentDir = fileURLToPath(new URL('.', import.meta.url));
+const peerDependencies = Object.keys(packageJson.peerDependencies || {});
 
 // https://vitejs.dev/guide/build.html#library-mode
 export default defineConfig({
-	// This ensures that vite runs in the current directory when
-	// running via `pnpm dev` from the workspace root.
+	// Run in the directory this file is located in when running
+	// via `pnpm dev` from the workspace root.
 	root: resolve(currentDir),
+	appType: 'custom',
 	plugins: [
-		// This plugin enables React Fast Refresh when running in
-		// dev mode. Alternatively, use `reactSwr()` for faster but
-		// less reliable builds (uses rust instead of babel).
+		// This plugin enables React support for Vite. It handles
+		// both JSX and TSX files.
 		react(),
-		// This plugin ensures that react and react-dom are not bundled
-		// with the library but are instead treated as peer dependencies.
-		// createExternal({
-		// 	externals: {
-		// 		react: 'React',
-		// 		'react-dom': 'ReactDOM',
-		// 	},
-		// }),
+
 		// This plugin generates types from the TypeScript source
 		// files so they can be used by other packages and apps.
-		dts(),
+		dts({
+			// Merge all declarations into one file
+			rollupTypes: true,
+		}),
 	],
-	// resolve: {
-	// 	// Forces vite to not follow symlinks to their original location. PNPM symlinks local dependency
-	// 	// packages into the `node_modules` folder and vite follows these symlinks by default. This
-	// 	// causes problems when vite tries to resolve local packages because they are outside the
-	// 	// root directory of the current package.json.
-	// 	//
-	// 	// - Example (true):   @acme/ui/* -> /node_modules/@acme/ui/*
-	// 	// - Example (false):  @acme/ui/* -> ../../packages/ui/*
-	// 	preserveSymlinks: true,
-	// },
 	build: {
-		// Ensure that the output dir is emptied before each build.
-		emptyOutDir: true,
 		// Ensure that the public dir is copied to the output dir so
 		// they can be used by consumers of the lib.
 		copyPublicDir: true,
 		sourcemap: true,
 		lib: {
 			entry: resolve(currentDir, 'src/index.ts'),
-			// The default name is the package name. We want to use
-			// the name index.js because it's more consistent.
+			// the proper extensions will be added
 			fileName: 'index',
 			formats: ['es'],
 		},
+		//minify: process.env.NODE_ENV === 'production',
 		rollupOptions: {
-			// make sure to externalize deps that shouldn't be bundled
-			// into your library
-			external: ['react', 'react-dom'],
+			/**
+			 * The "external" option is used to specify which modules should be
+			 * treated as external dependencies and thus should not be bundled
+			 * together with the rest of the code. Instead of including the
+			 * code for these modules in the bundle, they will be left as import
+			 * or require statements, and it will be up to the consumer to ensure
+			 * that they are available in the environment where the code is run.
+			 * @see https://rollupjs.org/configuration-options/#external
+			 */
+			external: [...peerDependencies, 'react/jsx-runtime', 'react-dom/client'],
 			output: {
-				// Provide global variables to use in the UMD build
-				// for externalized deps
+				/**
+				 * Tell Rollup that `react` is external and the `react` module
+				 * ID equates to the global `React` variable
+				 * @example `import React from 'react'` becomes `const React = window.React`
+				 * @see https://rollupjs.org/configuration-options/#output-globals
+				 */
 				globals: {
 					react: 'React',
 					'react-dom': 'ReactDOM',
+					'react/jsx-runtime': 'jsxs',
 				},
 			},
 		},
