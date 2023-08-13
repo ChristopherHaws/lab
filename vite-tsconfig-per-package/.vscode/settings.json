@@ -95,25 +95,25 @@
 		// These are seperate because we never want to see the git folder but
 		// we do want to see the .gitignore/.gitattributes files
 		"**/.git": true,
-		"**/.git*": false,
+		"**/.git*": true,
 
 		// IDE
 		".idea": true,
 		".vs": true,
 
 		// Node/PNPM
-		"**/.npmrc": false,
+		"**/.npmrc": true,
 		"**/node_modules": false,
-		"**/pnpm-lock.yaml": false,
+		"**/pnpm-lock.yaml": true,
 
 		// Build Output
 		"**/*.tsbuildinfo": true,
 		"**/.swc": true,
-		"**/dist": true,
+		"**/dist": false,
 
 		// Config
-		"**/.editorconfig": false,
-		"**/.prettier*": false
+		"**/.editorconfig": true,
+		"**/.prettier*": true
 	},
 	"git.autofetch": true,
 	"git.branchProtection": ["main", "release/*"],
@@ -124,7 +124,8 @@
 	"javascript.preferences.importModuleSpecifier": "project-relative",
 	"javascript.preferences.jsxAttributeCompletionStyle": "none",
 	"javascript.preferences.quoteStyle": "single",
-	"javascript.preferences.useAliasesForRenames": false,
+	// Disabled because the renames propagate to the node_modules folder...
+	//"javascript.preferences.useAliasesForRenames": false,
 	"javascript.preferGoToSourceDefinition": true,
 	"javascript.suggest.completeFunctionCalls": true,
 	"javascript.suggest.includeAutomaticOptionalChainCompletions": false,

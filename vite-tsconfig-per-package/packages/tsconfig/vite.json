@@ -1,31 +1,30 @@
 {
 	"$schema": "https://json.schemastore.org/tsconfig",
+	"display": "@acme/tsconfig/vite.json",
 	"extends": "@tsconfig/vite-react/tsconfig.json",
 	"compilerOptions": {
-		"composite": true,
-		"esModuleInterop": true,
+		/**************************************************
+		 *  TS project references
+		 *************************************************/
+		//"composite": true,
+
+		/**************************************************
+		 * Default from: @tsconfig/vite-react
+		 *************************************************/
+		// "esModuleInterop": false,
+		// "allowJs": true,
+		// "allowSyntheticDefaultImports": true,
+		// "forceConsistentCasingInFileNames": true,
+
+		/**************************************************
+		 *  Default from: vite template
+		 *************************************************/
+		// "esModuleInterop": true,
 		"allowImportingTsExtensions": true,
-		// https://www.typescriptlang.org/tsconfig#verbatimModuleSyntax
-		// "verbatimModuleSyntax": true
-		//"baseUrl": ".",
 
-		// Custom Overrides
-		"noEmit": false,
-		"emitDeclarationOnly": true,
-		"declarationMap": true,
-
-		//FIXME: Enabled/disabled until all errors are fixed
-		"strictNullChecks": false,
-		"noUnusedLocals": false,
-		"noUnusedParameters": false,
-		"noImplicitReturns": false,
-		"noImplicitAny": false,
-		"experimentalDecorators": true,
-		"noFallthroughCasesInSwitch": false,
-		"allowUmdGlobalAccess": true,
-
-		"paths": {
-			"@acme/ui/*": ["../ui/src/*"]
-		}
+		/* Linting */
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"noFallthroughCasesInSwitch": true
 	}
 }

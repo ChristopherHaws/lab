@@ -1,0 +1,25 @@
+{
+	"$schema": "https://json.schemastore.org/tsconfig",
+	"display": "@acme/tsconfig/vite.build.json",
+	"compilerOptions": {
+		/**************************************************
+		 *  TS project references
+		 *************************************************/
+		"composite": true,
+
+		/**************************************************
+		 *  Default from: vite template
+		 *************************************************/
+		"skipLibCheck": true,
+		"module": "ESNext",
+		"moduleResolution": "bundler",
+		"allowSyntheticDefaultImports": true,
+
+		/**************************************************
+		 *  Custom
+		 *************************************************/
+		"esModuleInterop": true,
+		"allowJs": true,
+		"checkJs": true
+	}
+}
