@@ -64,7 +64,7 @@ export default defineConfig({
 				peerDependencies.some(dep => source.startsWith(`${dep}/`));
 
 				if (externalize) {
-					console.log('build:rollupOptions:external:', {
+					console.log('externalized:', {
 						source,
 						importer,
 						isResolved,

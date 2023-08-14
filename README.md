@@ -26,6 +26,13 @@ This repo is a place for me to play around with different tech without needing t
 
 -   Try setting `auto-install-peers = true` in `.npmrc`
 
+# Packages vs apps
+
+This repo contains two types of workspaces:
+
+-   `packages`: meant to be published to npm and installed,
+-   `apps`: meant to be executed.
+
 ### Relevant Links
 
 -   [Problem with Vite and CommonJS package in monorepo (Vite #5668)](https://github.com/vitejs/vite/issues/5668)
