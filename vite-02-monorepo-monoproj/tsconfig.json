@@ -15,12 +15,12 @@
 	 */
 	"include": ["apps/*/src", "packages/*/src"],
 	"compilerOptions": {
-		"baseUrl": ".",
+		"baseUrl": "."
 		// Disabled so I can see if typescript can infer the roots
 		//"rootDirs": ["apps/frontend/src", "packages/ui/src"],
-		"paths": {
-			"@acme/frontend/*": ["apps/frontend/src/*"],
-			"@acme/ui": ["packages/ui/src"]
-		}
+		// "paths": {
+		// 	"@acme/frontend/*": ["apps/frontend/src/*"],
+		// 	"@acme/ui": ["packages/ui/src"]
+		// }
 	}
 }
