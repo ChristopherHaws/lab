@@ -33,7 +33,7 @@ This repo contains two types of workspaces:
 -   `packages`: meant to be published to npm and installed,
 -   `apps`: meant to be executed.
 
-### Relevant Links
+### Useful Links
 
 -   [Problem with Vite and CommonJS package in monorepo (Vite #5668)](https://github.com/vitejs/vite/issues/5668)
 -   [You might not need TypeScript project references](https://turbo.build/blog/you-might-not-need-typescript-project-references)
@@ -42,3 +42,4 @@ This repo contains two types of workspaces:
 -   [Template project for setting up a TypeScript monorepo (internal packages)](https://github.com/NiGhTTraX/ts-monorepo)
 -   [Template project for setting up a TypeScript monorepo (project references)](https://github.com/NiGhTTraX/ts-monorepo/tree/project-references)
 -   [A guide through The Wild Wild West of setting up a mono repo with TypeScript, Lerna and Yarn Workspaces](https://blog.ah.technology/a-guide-through-the-wild-wild-west-of-setting-up-a-mono-repo-with-typescript-lerna-and-yarn-ed6a1e5467a)
+-   [TypeScript Project Configuration Options](https://plainenglish.io/blog/typescript-project-directory-structure-module-resolution-and-related-configuration-options)
