@@ -28,4 +28,10 @@ This repo is a place for me to play around with different tech without needing t
 
 ### Relevant Links
 
--   https://github.com/vitejs/vite/issues/5668
+-   [Problem with Vite and CommonJS package in monorepo (Vite #5668)](https://github.com/vitejs/vite/issues/5668)
+-   [You might not need TypeScript project references](https://turbo.build/blog/you-might-not-need-typescript-project-references)
+-   [How to set up a TypeScript monorepo and make Go to definition work](https://medium.com/@NiGhTTraX/how-to-set-up-a-typescript-monorepo-with-lerna-c6acda7d4559)
+-   [Making TypeScript monorepos play nice with other tools](https://medium.com/@NiGhTTraX/making-typescript-monorepos-play-nice-with-other-tools-a8d197fdc680)
+-   [Template project for setting up a TypeScript monorepo (internal packages)](https://github.com/NiGhTTraX/ts-monorepo)
+-   [Template project for setting up a TypeScript monorepo (project references)](https://github.com/NiGhTTraX/ts-monorepo/tree/project-references)
+-   [A guide through The Wild Wild West of setting up a mono repo with TypeScript, Lerna and Yarn Workspaces](https://blog.ah.technology/a-guide-through-the-wild-wild-west-of-setting-up-a-mono-repo-with-typescript-lerna-and-yarn-ed6a1e5467a)
