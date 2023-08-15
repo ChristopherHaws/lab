@@ -19,13 +19,5 @@
 		"packages/*/package.json",
 		"packages/*/vite.config.ts",
 		"packages/*/vitest.config.ts"
-	],
-	"compilerOptions": {
-		"baseUrl": "."
-		// Disabled so I can see if typescript can infer the root
-		//"rootDir": ".",
-		// "paths": {
-		// 	"@acme/*": ["apps/*/", "packages/*/"]
-		// }
-	}
+	]
 }

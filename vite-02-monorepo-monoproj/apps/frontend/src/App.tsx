@@ -1,6 +1,7 @@
 import { someUtilityFunction } from '@acme/ui/utils';
 import './App.css';
 
+import { Foo } from '@acme/frontend/components';
 import { Counter, Counter2 } from '@acme/ui';
 
 function App() {
@@ -8,6 +9,7 @@ function App() {
 		<>
 			<Counter />
 			<Counter2 />
+			<Foo />
 			<p className="read-the-docs">{someUtilityFunction()}</p>
 		</>
 	);
