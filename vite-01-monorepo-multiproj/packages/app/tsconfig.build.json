@@ -1,0 +1,8 @@
+{
+	"extends": "@acme/tsconfig/vite.build.json",
+	"display": "@acme/app/tsconfig.build.json",
+	"include": ["vite.config.ts"],
+	"compilerOptions": {
+		"composite": true
+	}
+}

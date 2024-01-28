@@ -13,14 +13,14 @@
 	 * - "**": Matches zero or more directories in recursive directory searches
 	 * - "[abc]": Matches any one character in the set {a, b, c}
 	 */
-	"include": ["apps/*/src", "packages/*/src"],
+	"include": ["packages/*/src"],
 	"compilerOptions": {
 		"noEmit": true,
 		"baseUrl": ".",
 		"paths": {
 			// There is no need to add libs here as they get installed as packages in the
 			// app's node_modules folder so standard node module resolution will work
-			"@acme/frontend/*": ["apps/frontend/src/*"]
+			"@acme/app/*": ["packages/app/src/*"]
 		}
 	}
 }

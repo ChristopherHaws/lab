@@ -36,8 +36,11 @@ importers:
         specifier: ^4.4.5
         version: 4.4.5
 
-  apps/frontend:
+  packages/app:
     dependencies:
+      '@acme/ui':
+        specifier: workspace:*
+        version: link:../ui
       react:
         specifier: ^18.2.0
         version: 18.2.0
@@ -45,9 +48,9 @@ importers:
         specifier: ^18.2.0
         version: 18.2.0(react@18.2.0)
     devDependencies:
-      '@acme/ui':
+      '@acme/config-vite':
         specifier: workspace:*
-        version: link:../../packages/ui
+        version: link:../vite-plugin-monorepo
       '@types/react':
         specifier: ^18.2.15
         version: 18.2.15
@@ -111,6 +114,22 @@ importers:
         version: 2.0.0
 
   packages/ui:
+    dependencies:
+      react:
+        specifier: ^18.2.0
+        version: 18.2.0
+      react-dom:
+        specifier: ^18.2.0
+        version: 18.2.0(react@18.2.0)
+    devDependencies:
+      '@types/react':
+        specifier: ^18.2.15
+        version: 18.2.15
+      '@types/react-dom':
+        specifier: ^18.2.7
+        version: 18.2.7
+
+  packages/vite-plugin-monorepo:
     dependencies:
       react:
         specifier: ^18.2.0

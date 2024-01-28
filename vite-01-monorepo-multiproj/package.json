@@ -25,11 +25,12 @@
 		"test:ci": "vitest --run",
 		"test:coverage": "vitest --coverage",
 		"test:ui": "vitest --ui",
-		"frontend": "pnpm --filter @acme/frontend",
+		"app": "pnpm --filter @acme/app",
 		"ui": "pnpm --filter @acme/ui",
 		"scripts": "pnpm --filter @acme/scripts"
 	},
 	"dependencies": {
+		"@acme/eslint-config": "workspace:*",
 		"@acme/tsconfig": "workspace:*",
 		"cross-env": "^7.0.3",
 		"prettier": "^3.0.0",

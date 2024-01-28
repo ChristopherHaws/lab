@@ -1,6 +1,6 @@
 {
 	"extends": "@acme/tsconfig/vite.json",
-	"display": "@acme/ui/tsconfig.json",
+	"display": "@acme/app/tsconfig.json",
 	"include": ["src"],
 	"references": [{ "path": "./tsconfig.build.json" }]
 }

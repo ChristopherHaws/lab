@@ -1,6 +1,0 @@
-{
-	"extends": "@acme/tsconfig/vite.json",
-	"display": "@acme/frontend/tsconfig.json",
-	"include": ["src"],
-	"references": [{ "path": "./tsconfig.build.json" }]
-}

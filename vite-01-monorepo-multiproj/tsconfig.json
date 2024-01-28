@@ -2,11 +2,7 @@
 	"display": "@acme/workspace",
 	"files": [],
 	"references": [
-		{
-			"path": "./apps/frontend/tsconfig.json"
-		},
-		{
-			"path": "./packages/ui/tsconfig.json"
-		}
+		{ "path": "./packages/app/tsconfig.json" },
+		{ "path": "./packages/ui/tsconfig.json" }
 	]
 }

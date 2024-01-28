@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@acme/eslint-config':
+        specifier: workspace:*
+        version: link:packages/eslint-config
       '@acme/tsconfig':
         specifier: workspace:*
         version: link:packages/tsconfig
@@ -24,7 +27,7 @@ importers:
         specifier: ^5.1.6
         version: 5.1.6
 
-  apps/frontend:
+  packages/app:
     dependencies:
       react:
         specifier: ^18.2.0
@@ -35,13 +38,13 @@ importers:
     devDependencies:
       '@acme/eslint-config':
         specifier: workspace:*
-        version: link:../../packages/eslint-config
+        version: link:../eslint-config
       '@acme/tsconfig':
         specifier: workspace:*
-        version: link:../../packages/tsconfig
+        version: link:../tsconfig
       '@acme/ui':
         specifier: workspace:*
-        version: link:../../packages/ui
+        version: link:../ui
       '@types/react':
         specifier: ^18.2.15
         version: 18.2.15
