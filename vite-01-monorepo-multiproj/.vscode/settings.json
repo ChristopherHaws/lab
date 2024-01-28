@@ -42,8 +42,7 @@
 		"gitlens.codeLens.scopes": ["document"]
 	},
 	"editor.codeActionsOnSave": {
-		//"source.fixAll": true
-		"source.sortImports": true
+		"source.sortImports": "explicit"
 	},
 	"editor.detectIndentation": false,
 	"editor.formatOnPaste": false,
