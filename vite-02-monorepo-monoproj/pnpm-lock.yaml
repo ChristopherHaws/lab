@@ -48,7 +48,7 @@ importers:
         specifier: ^18.2.0
         version: 18.2.0(react@18.2.0)
     devDependencies:
-      '@acme/config-vite':
+      '@acme/vite-plugin-monorepo':
         specifier: workspace:*
         version: link:../vite-plugin-monorepo
       '@types/react':
