@@ -13,9 +13,9 @@
 	 * - "[abc]": Matches any one character in the set {a, b, c}
 	 */
 	"include": [
-		"apps/*/package.json",
-		"apps/*/vite.config.ts",
-		"apps/*/vitest.config.ts",
+		"config/*/package.json",
+		"config/*/vite.config.ts",
+		"config/*/vitest.config.ts",
 		"packages/*/package.json",
 		"packages/*/vite.config.ts",
 		"packages/*/vitest.config.ts"

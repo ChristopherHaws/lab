@@ -10,10 +10,10 @@ importers:
     dependencies:
       '@acme/eslint-config':
         specifier: workspace:*
-        version: link:packages/eslint-config
+        version: link:config/eslint-config
       '@acme/tsconfig':
         specifier: workspace:*
-        version: link:packages/tsconfig
+        version: link:config/tsconfig
       '@acme/ui':
         specifier: workspace:*
         version: link:packages/ui
@@ -36,41 +36,7 @@ importers:
         specifier: ^4.4.5
         version: 4.4.5
 
-  packages/app:
-    dependencies:
-      '@acme/ui':
-        specifier: workspace:*
-        version: link:../ui
-      react:
-        specifier: ^18.2.0
-        version: 18.2.0
-      react-dom:
-        specifier: ^18.2.0
-        version: 18.2.0(react@18.2.0)
-    devDependencies:
-      '@acme/vite-plugin-monorepo':
-        specifier: workspace:*
-        version: link:../vite-plugin-monorepo
-      '@types/react':
-        specifier: ^18.2.15
-        version: 18.2.15
-      '@types/react-dom':
-        specifier: ^18.2.7
-        version: 18.2.7
-      '@vitejs/plugin-react':
-        specifier: ^4.0.3
-        version: 4.0.3(vite@4.4.5)
-      typescript:
-        specifier: ^5.1.6
-        version: 5.1.6
-      vite:
-        specifier: ^4.4.5
-        version: 4.4.5
-      vite-tsconfig-paths:
-        specifier: ^4.2.0
-        version: 4.2.0(typescript@5.1.6)(vite@4.4.5)
-
-  packages/eslint-config:
+  config/eslint-config:
     dependencies:
       '@typescript-eslint/eslint-plugin':
         specifier: ^6.0.0
@@ -104,7 +70,7 @@ importers:
         specifier: ^5.1.6
         version: 5.1.6
 
-  packages/tsconfig:
+  config/tsconfig:
     dependencies:
       '@tsconfig/recommended':
         specifier: ^1.0.2
@@ -113,7 +79,7 @@ importers:
         specifier: ^2.0.0
         version: 2.0.0
 
-  packages/ui:
+  config/vite-plugin-monorepo:
     dependencies:
       react:
         specifier: ^18.2.0
@@ -129,7 +95,41 @@ importers:
         specifier: ^18.2.7
         version: 18.2.7
 
-  packages/vite-plugin-monorepo:
+  packages/app:
+    dependencies:
+      '@acme/ui':
+        specifier: workspace:*
+        version: link:../ui
+      react:
+        specifier: ^18.2.0
+        version: 18.2.0
+      react-dom:
+        specifier: ^18.2.0
+        version: 18.2.0(react@18.2.0)
+    devDependencies:
+      '@acme/vite-plugin-monorepo':
+        specifier: workspace:*
+        version: link:../../config/vite-plugin-monorepo
+      '@types/react':
+        specifier: ^18.2.15
+        version: 18.2.15
+      '@types/react-dom':
+        specifier: ^18.2.7
+        version: 18.2.7
+      '@vitejs/plugin-react':
+        specifier: ^4.0.3
+        version: 4.0.3(vite@4.4.5)
+      typescript:
+        specifier: ^5.1.6
+        version: 5.1.6
+      vite:
+        specifier: ^4.4.5
+        version: 4.4.5
+      vite-tsconfig-paths:
+        specifier: ^4.2.0
+        version: 4.2.0(typescript@5.1.6)(vite@4.4.5)
+
+  packages/ui:
     dependencies:
       react:
         specifier: ^18.2.0
