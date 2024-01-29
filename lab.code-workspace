@@ -26,6 +26,6 @@
 			"**/.npmrc-*": "properties",
 			"**/package.json": "json",
 			"*.editorconfig": "editorconfig"
-		}
+		},
 	}
 }

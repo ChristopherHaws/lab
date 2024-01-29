@@ -15,9 +15,13 @@
 	"include": [
 		"config/*/package.json",
 		"config/*/vite.config.ts",
+		"config/*/vite.config.mts",
 		"config/*/vitest.config.ts",
+		"config/*/vitest.config.mts",
 		"packages/*/package.json",
 		"packages/*/vite.config.ts",
-		"packages/*/vitest.config.ts"
+		"packages/*/vite.config.mts",
+		"packages/*/vitest.config.ts",
+		"packages/*/vitest.config.mts"
 	]
 }

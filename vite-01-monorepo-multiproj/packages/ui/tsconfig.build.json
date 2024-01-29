@@ -1,7 +1,7 @@
 {
 	"extends": "@acme/tsconfig/vite.build.json",
 	"display": "@acme/ui/tsconfig.build.json",
-	"include": ["vite.config.ts", "package.json"],
+	"include": ["vite.config.mts", "package.json"],
 	"compilerOptions": {
 		"composite": true
 	}
