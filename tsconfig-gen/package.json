@@ -1,0 +1,25 @@
+{
+  "name": "tsconfig-gen",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "module": "out/main.js",
+  "scripts": {
+    "build:base": "tsup src/main.ts -d out --format esm --target es2020 --sourcemap",
+    "build": "pnpm build:base --treeshake recommended --minify --legacy-output --clean",
+    "watch": "pnpm build:base --watch --silent --onSuccess \"pnpm test\"",
+    "clean": "tsup --clean",
+    "typecheck": "tsc --noEmit",
+    "test": "node out/main.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "tsup": "^8.0.1",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "tsconfck": "^3.0.1"
+  }
+}

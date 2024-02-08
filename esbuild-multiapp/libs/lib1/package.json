@@ -1,0 +1,12 @@
+{
+  "name": "@acme/lib1",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "build": "esbuild app.jsx --bundle --minify --sourcemap --target=chrome58,firefox57,safari11,edge16 --outdir=../../dist/libs/lib1 src/index.ts",
+    "clean": "rimraf ../../dist/libs/lib1",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "name": "@acme/app1",
+  "type": "module",
+  "exports": {
+    "types": "./src/index.ts",
+    "default": "./dist/index.js"
+  },
+  "imports": {
+    "#/*": "./src/*"
+  },
+  "scripts": {
+    "dev": "esbuild src/index.tsx --outdir=public/js --servedir=public --bundle --watch",
+    "serve": "esbuild src/index.tsx --outdir=public/js --servedir=public --bundle",
+    "build": "esbuild src/index.tsx --outdir=public/js --bundle --minify --sourcemap --target=chrome58,firefox57,safari11,edge16",
+    "clean": "rimraf public/js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@acme/lib1": "workspace:*",
+    "@acme/lib2": "workspace:*",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "18.2.55",
+    "@types/react-dom": "18.2.19"
+  }
+}

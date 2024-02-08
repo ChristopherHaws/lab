@@ -1,0 +1,21 @@
+{
+	"extends": "@tsconfig/vite-react/tsconfig.json",
+	"include": ["apps/*/src/**/*", "libs/*/src/**/*"],
+	"compilerOptions": {
+		"strict": true,
+		"outDir": "./dist/tsc-out",
+		"noEmit": true,
+		"useDefineForClassFields": true,
+		"jsx": "react-jsx",
+		"paths": {
+			"@acme/app1": ["./apps/app1/src/index.tsx", "./apps/app1/src/index.mts"],
+			"@acme/app1/*": ["./apps/app1/src/*/index.ts", "./apps/app1/src/*/index.mts"],
+			"@acme/app2": ["./apps/app2/src/index.ts", "./apps/app2/src/index.mts"],
+			"@acme/app2/*": ["./apps/app2/src/*/index.ts", "./apps/app2/src/*/index.mts"],
+			"@acme/lib1": ["./apps/lib1/src/index.ts", "./apps/lib1/src/index.mts"],
+			"@acme/lib1/*": ["./apps/lib1/src/*/index.ts", "./apps/lib1/src/*/index.mts"],
+			"@acme/lib2": ["./apps/lib2/src/index.ts", "./apps/lib2/src/index.mts"],
+			"@acme/lib2/*": ["./apps/lib2/src/*/index.ts", "./apps/lib2/src/*/index.mts"]
+		},
+	}
+}

@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json.schemastore.org/package.json",
+  "name": "@acme/app2",
+  "type": "module",
+  "exports": {
+    "types": "./src/index.ts",
+    "default": "./dist/index.js"
+  },
+  "imports": {
+    "#/*": "./src/*"
+  },
+  "scripts": {
+    "dev": "esbuild src/index.ts --outdir=dist --servedir=dist --bundle --watch",
+    "serve": "esbuild src/index.ts --outdir=dist --servedir=dist --bundle",
+    "build": "esbuild src/index.ts --outdir=dist --bundle --minify --sourcemap --target=chrome58,firefox57,safari11,edge16",
+    "clean": "rimraf ./dist",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@acme/lib1": "workspace:*",
+    "@acme/lib2": "workspace:*",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "name": "@acme/workspace",
+  "license": "ISC",
+  "scripts": {
+    "build": "pnpm run -r build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "@tsconfig/vite-react": "3.0.0",
+    "esbuild": "^0.20.0",
+    "rimraf": "5.0.5"
+  }
+}

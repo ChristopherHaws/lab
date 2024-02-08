@@ -5,19 +5,29 @@
 			"path": "."
 		},
 		{
+			"name": "esbuild / multiapp-shared-lib",
+			"path": "esbuild-multiapp"
+		},
+		{
 			"name": "vite-monorepo / multiple-tsconfig",
 			"path": "vite-01-monorepo-multiproj"
 		},
 		{
 			"name": "vite-monorepo / single-tsconfig",
 			"path": "vite-02-monorepo-monoproj"
+		},
+		{
+			"name": "tsconfig-gen",
+			"path": "tsconfig-gen"
 		}
 	],
 	"settings": {
 		// Exclude the project folders from the root workspace folder
 		"files.exclude": {
+			"esbuild-multiapp": true,
 			"vite-01-monorepo-multiproj": true,
-			"vite-02-monorepo-monoproj": true
+			"vite-02-monorepo-monoproj": true,
+			"tsconfig-gen": true
 		},
 		"files.associations": {
 			// Most of the tools support comments in JSON files. If a specific file
