@@ -31,6 +31,6 @@
 			// app's node_modules folder so standard node module resolution will work
 			"@acme/app/*": ["packages/app/src/*"]
 		},
-		"types": ["vite/client", "vitest/globals"]
+		"types": ["vite/client"]
 	}
 }
