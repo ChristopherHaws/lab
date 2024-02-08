@@ -14,15 +14,7 @@
 	 * - "[abc]": Matches any one character in the set {a, b, c}
 	 */
 	"include": ["packages/*/src/**/*.ts", "packages/*/src/**/*.tsx", "packages/*/src/**/*.mts"],
-	"exclude": [
-		"**/node_modules",
-		"**/dist",
-		"**/*.tests.*",
-		"**/*.mocks.*",
-		"**/*.e2e.*",
-		"**/*.stories.*",
-		"**/*.mock.*"
-	],
+	"exclude": ["**/node_modules", "**/dist", "**/*.*.*"],
 	"compilerOptions": {
 		"baseUrl": ".",
 		"outDir": "dist/web",
