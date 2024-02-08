@@ -7,7 +7,7 @@
 		"access": "public"
 	},
 	"dependencies": {
-		"@tsconfig/recommended": "^1.0.2",
-		"@tsconfig/vite-react": "^2.0.0"
+		"@tsconfig/recommended": "^1.0.3",
+		"@tsconfig/vite-react": "^3.0.0"
 	}
 }

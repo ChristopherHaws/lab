@@ -1,7 +1,8 @@
 {
 	"$schema": "https://json.schemastore.org/tsconfig",
-	"display": "@acme/workspace/build",
+	"display": "@acme/workspace/stories",
 	"extends": "@acme/tsconfig/vite.build.json",
+	"references": [{ "path": "./tsconfig.types.json" }, { "path": "./tsconfig.mocks.json" }],
 	/**
 	 * TypeScript uses a pattern known as "glob-like" syntax for specifying file
 	 * patterns. It is similar to the typical globbing patterns but with some
@@ -13,24 +14,18 @@
 	 * - "[abc]": Matches any one character in the set {a, b, c}
 	 */
 	"include": [
-		"config/*/package.json",
-		"config/*/vite.config.ts",
-		"config/*/vite.config.mts",
-		"config/*/vitest.config.ts",
-		"config/*/vitest.config.mts",
-		"packages/*/package.json",
-		"packages/*/vite.config.ts",
-		"packages/*/vite.config.mts",
-		"packages/*/vitest.config.ts",
-		"packages/*/vitest.config.mts"
+		"packages/*/src/**/*.stories.ts",
+		"packages/*/src/**/*.stories.tsx",
+		"packages/*/src/**/*.stories.mts"
 	],
 	"compilerOptions": {
 		"baseUrl": ".",
-		"outDir": "dist/.build",
+		"outDir": "dist/.stories",
 		"paths": {
 			// There is no need to add libs here as they get installed as packages in the
 			// app's node_modules folder so standard node module resolution will work
 			"@acme/app/*": ["packages/app/src/*"]
 		}
+		//"types": ["storybook"]
 	}
 }

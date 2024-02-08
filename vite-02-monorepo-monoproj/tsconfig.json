@@ -1,8 +1,14 @@
 {
 	"$schema": "https://json.schemastore.org/tsconfig",
+	"display": "@acme/workspace",
 	"extends": "@acme/tsconfig/vite.json",
-	"display": "@acme/workspace/tsconfig.json",
-	"references": [{ "path": "./tsconfig.build.json" }],
+	"references": [
+		{ "path": "./tsconfig.build.json" },
+		{ "path": "./tsconfig.mocks.json" },
+		{ "path": "./tsconfig.stories.json" },
+		{ "path": "./tsconfig.tests.json" },
+		{ "path": "./tsconfig.types.json" }
+	],
 	/**
 	 * TypeScript uses a pattern known as "glob-like" syntax for specifying file
 	 * patterns. It is similar to the typical globbing patterns but with some
@@ -14,6 +20,14 @@
 	 * - "[abc]": Matches any one character in the set {a, b, c}
 	 */
 	"include": ["packages/*/src"],
+	"exclude": [
+		"**/node_modules",
+		"**/dist",
+		"**/*.test.*",
+		"**/*.e2e.*",
+		"**/*.story.*",
+		"**/*.mock.*"
+	],
 	"compilerOptions": {
 		"noEmit": true,
 		"baseUrl": ".",

@@ -13,17 +13,18 @@
 		"preview": "vite preview"
 	},
 	"dependencies": {
+		"@acme/ui": "workspace:*",
 		"react": "^18.2.0",
-		"react-dom": "^18.2.0",
-		"@acme/ui": "workspace:*"
+		"react-dom": "^18.2.0"
 	},
 	"devDependencies": {
 		"@acme/vite-plugin-monorepo": "workspace:*",
-		"@types/react": "^18.2.15",
-		"@types/react-dom": "^18.2.7",
-		"@vitejs/plugin-react": "^4.0.3",
-		"vite-tsconfig-paths": "^4.2.0",
-		"typescript": "^5.1.6",
-		"vite": "^4.4.5"
+		"@types/react": "^18.2.55",
+		"@types/react-dom": "^18.2.19",
+		"@vitejs/plugin-react": "^4.2.1",
+		"typescript": "^5.3.3",
+		"vite": "^5.0.12",
+		"vitest": "^1.2.2",
+		"vite-tsconfig-paths": "^4.3.1"
 	}
 }

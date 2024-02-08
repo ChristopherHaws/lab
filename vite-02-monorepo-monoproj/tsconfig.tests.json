@@ -1,6 +1,6 @@
 {
 	"$schema": "https://json.schemastore.org/tsconfig",
-	"display": "@acme/workspace/build",
+	"display": "@acme/workspace/tests",
 	"extends": "@acme/tsconfig/vite.build.json",
 	/**
 	 * TypeScript uses a pattern known as "glob-like" syntax for specifying file
@@ -12,25 +12,16 @@
 	 * - "**": Matches zero or more directories in recursive directory searches
 	 * - "[abc]": Matches any one character in the set {a, b, c}
 	 */
-	"include": [
-		"config/*/package.json",
-		"config/*/vite.config.ts",
-		"config/*/vite.config.mts",
-		"config/*/vitest.config.ts",
-		"config/*/vitest.config.mts",
-		"packages/*/package.json",
-		"packages/*/vite.config.ts",
-		"packages/*/vite.config.mts",
-		"packages/*/vitest.config.ts",
-		"packages/*/vitest.config.mts"
-	],
+	"include": ["**/src/**/*.tests.ts", "**/src/**/*.tests.tsx", "**/src/**/*.tests.mts"],
+	"exclude": ["node_modules", "dist"],
 	"compilerOptions": {
 		"baseUrl": ".",
-		"outDir": "dist/.build",
+		"outDir": "dist/.tests",
 		"paths": {
 			// There is no need to add libs here as they get installed as packages in the
 			// app's node_modules folder so standard node module resolution will work
 			"@acme/app/*": ["packages/app/src/*"]
 		}
+		// "types": ["vitest"]
 	}
 }
