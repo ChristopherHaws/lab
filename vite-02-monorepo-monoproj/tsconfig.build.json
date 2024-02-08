@@ -23,5 +23,14 @@
 		"packages/*/vite.config.mts",
 		"packages/*/vitest.config.ts",
 		"packages/*/vitest.config.mts"
-	]
+	],
+	"compilerOptions": {
+		"baseUrl": ".",
+		"outDir": "dist/.build",
+		"paths": {
+			// There is no need to add libs here as they get installed as packages in the
+			// app's node_modules folder so standard node module resolution will work
+			"@acme/app/*": ["packages/app/src/*"]
+		}
+	}
 }

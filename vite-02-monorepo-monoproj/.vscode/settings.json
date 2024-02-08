@@ -102,19 +102,19 @@
 		".vs": true,
 
 		// Node/PNPM
-		"**/.npmrc": true,
+		"**/.npmrc": false,
 		"**/node_modules": false,
-		"**/pnpm-lock.yaml": true,
+		"**/pnpm-lock.yaml": false,
 
 		// Build Output
-		"**/*.tsbuildinfo": true,
-		"**/.swc": true,
+		"**/*.tsbuildinfo": false,
+		"**/.swc": false,
 		"**/dist": false,
 		"**/*timestamp-*.mjs": true,
 
 		// Config
-		"**/.editorconfig": true,
-		"**/.prettier*": true
+		"**/.editorconfig": false,
+		"**/.prettier*": false
 	},
 	"git.autofetch": true,
 	"git.branchProtection": ["main", "release/*"],

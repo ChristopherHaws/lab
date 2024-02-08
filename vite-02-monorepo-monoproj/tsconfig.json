@@ -17,6 +17,7 @@
 	"compilerOptions": {
 		"noEmit": true,
 		"baseUrl": ".",
+		"outDir": "dist",
 		"paths": {
 			// There is no need to add libs here as they get installed as packages in the
 			// app's node_modules folder so standard node module resolution will work
