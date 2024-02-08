@@ -14,9 +14,11 @@
 
 		/* ----------------- Defaults from `@tsconfig/vite-react` ----------------- */
 		// "esModuleInterop": true,
+		"resolveJsonModule": true,
 		"allowImportingTsExtensions": true,
 		"noUnusedLocals": true,
 		"noUnusedParameters": true,
-		"noFallthroughCasesInSwitch": true
+		"noFallthroughCasesInSwitch": true,
+		"useUnknownInCatchVariables": true
 	}
 }

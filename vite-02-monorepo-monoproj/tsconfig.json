@@ -2,40 +2,13 @@
 	"$schema": "https://json.schemastore.org/tsconfig",
 	"display": "@acme/workspace",
 	"extends": "@acme/tsconfig/vite.json",
+	"files": [],
 	"references": [
+		{ "path": "./tsconfig.web.json" },
 		{ "path": "./tsconfig.build.json" },
 		{ "path": "./tsconfig.mocks.json" },
 		{ "path": "./tsconfig.stories.json" },
 		{ "path": "./tsconfig.tests.json" },
 		{ "path": "./tsconfig.types.json" }
-	],
-	/**
-	 * TypeScript uses a pattern known as "glob-like" syntax for specifying file
-	 * patterns. It is similar to the typical globbing patterns but with some
-	 * specific rules and restrictions.
-	 *
-	 * - "*": Matches zero or more characters (excluding directory separators)
-	 * - "?": Matches any one character (excluding directory separators)
-	 * - "**": Matches zero or more directories in recursive directory searches
-	 * - "[abc]": Matches any one character in the set {a, b, c}
-	 */
-	"include": ["packages/*/src"],
-	"exclude": [
-		"**/node_modules",
-		"**/dist",
-		"**/*.test.*",
-		"**/*.e2e.*",
-		"**/*.story.*",
-		"**/*.mock.*"
-	],
-	"compilerOptions": {
-		"noEmit": true,
-		"baseUrl": ".",
-		"outDir": "dist",
-		"paths": {
-			// There is no need to add libs here as they get installed as packages in the
-			// app's node_modules folder so standard node module resolution will work
-			"@acme/app/*": ["packages/app/src/*"]
-		}
-	}
+	]
 }

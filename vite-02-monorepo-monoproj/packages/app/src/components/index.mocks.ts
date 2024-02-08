@@ -1,4 +1,3 @@
-import { vi } from 'vitest';
 import type { Calculator } from './index.types';
 
 export function mockCalculator(): Calculator {

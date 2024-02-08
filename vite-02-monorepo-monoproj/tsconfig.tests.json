@@ -2,6 +2,7 @@
 	"$schema": "https://json.schemastore.org/tsconfig",
 	"display": "@acme/workspace/tests",
 	"extends": "@acme/tsconfig/vite.build.json",
+	"references": [{ "path": "./tsconfig.types.json" }, { "path": "./tsconfig.mocks.json" }],
 	/**
 	 * TypeScript uses a pattern known as "glob-like" syntax for specifying file
 	 * patterns. It is similar to the typical globbing patterns but with some
@@ -21,7 +22,11 @@
 			// There is no need to add libs here as they get installed as packages in the
 			// app's node_modules folder so standard node module resolution will work
 			"@acme/app/*": ["packages/app/src/*"]
-		}
-		// "types": ["vitest"]
+		},
+		"types": [
+			"vite/client",
+			"vitest/globals"
+			// "@vitest/browser/providers/playwright"
+		]
 	}
 }

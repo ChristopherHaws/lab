@@ -1,7 +1,9 @@
-import { describe, expect, it } from 'vitest';
+import { mockCalculator } from './index.mocks';
 
 describe('index', () => {
+	const calculator = mockCalculator();
+
 	it('should work', () => {
-		expect(true).toBe(true);
+		expect(calculator.add(1, 6)).toBe(7);
 	});
 });
