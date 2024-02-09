@@ -1,0 +1,60 @@
+projects:
+    stories:
+        path: ./acme/stories
+        references: [shared, app1, app2]
+        subprojects: [types, web, mocks, tests, stories]
+    app1:
+        path: ./acme/app1
+        references: [shared]
+        subprojects: [types, web, mocks, tests, stories]
+    app2:
+        path: ./acme/app2
+        references: [shared]
+        subprojects: [types, web, mocks, tests, stories]
+    shared:
+        path: ./acme/shared
+        subprojects: [types, web, mocks, tests, stories]
+
+subprojects:
+    types:
+        include: ['src/**/*.types.{ts,tsx,mts}']
+    web:
+        extends: [web]
+        references: [types]
+        include: ['src/**/*.{ts,tsx,mts}']
+        exclude: ['src/**/*.{types,mocks,tests,stories}.{ts,tsx,mts}']
+    mocks:
+        extends: [base]
+        references: [types, web]
+        include: ['src/**/*.mocks.{ts,tsx,mts}']
+        types: ['vitest/global']
+    tests:
+        extends: [web]
+        references: [types, web, mocks]
+        include: ['src/**/*.tests.{ts,tsx,mts}']
+        types: ['vitest/global']
+    stories:
+        extends: [storybook]
+        references: [types, web, mocks]
+        include: ['src/**/*.stories.{ts,tsx,mts}']
+
+options:
+    base:
+        outDir: './dist'
+        target: 'module'
+        module: 'esnext'
+        lib: ['esnext']
+        jsx: 'react'
+        strict: true
+    web:
+        extends: [base]
+        lib: ['dom', 'dom.iterable', 'esnext.asynciterable']
+        jsx: 'react-jsx'
+        strict: true
+        types: ['react', 'react-dom', 'vite/client']
+    webworker:
+        extends: [web]
+        lib: ['webworker']
+    storybook:
+        extends: [web]
+        types: ['@storybook/react']

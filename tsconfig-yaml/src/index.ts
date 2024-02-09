@@ -1,0 +1,185 @@
+import * as fs from 'node:fs';
+import * as path from 'node:path';
+import { parseDocument } from 'yaml';
+import chokidar from 'chokidar';
+import { log } from './logger';
+import type {
+	TsConfigYaml,
+	ProjectConfig,
+	SubprojectConfig,
+	BaseOptions,
+} from './types';
+
+// Main function to handle reading and generating tsconfig files.
+function generateTsConfigs(dir: string) {
+	dir = toAbsolute(dir);
+	log.info('Generating tsconfig files...');
+	log.info('Directory:', dir);
+
+	const yamlFilePath = findTsConfigYaml(dir);
+
+	if (!yamlFilePath) {
+		console.error('No tsconfig.yaml or tsconfig.yml file found.');
+		process.exit(1);
+	}
+
+	log.info('Found tsconfig.yaml file:', yamlFilePath);
+
+	try {
+		const yamlContent = fs.readFileSync(yamlFilePath, 'utf8');
+		const config = parseDocument(yamlContent).toJSON() as TsConfigYaml;
+
+		log.debug('Parsed YAML content:', config);
+
+		// Generate tsconfigs for each project.
+		for (const [projectName, project] of Object.entries(config.projects)) {
+			log.info('Generating tsconfig files for project:', projectName);
+			generateProjectTsConfig(dir, projectName, project, config);
+
+			// Generate tsconfigs for each subproject if any.
+			if (project.subprojects) {
+				for (const subproject of project.subprojects) {
+					log.debug(
+						'Generating tsconfig for subproject:',
+						subproject,
+					);
+					generateSubprojectTsConfig(
+						dir,
+						projectName,
+						subproject,
+						config,
+					);
+				}
+			}
+		}
+
+		log.info('Generated all tsconfig files successfully.');
+	} catch (error) {
+		console.error('Error parsing YAML content:', error);
+	}
+}
+
+// Function to find either tsconfig.yaml or tsconfig.yml file.
+function findTsConfigYaml(cwd: string): string | null {
+	const yamlFile = path.join(cwd, 'tsconfig.yaml');
+	const ymlFile = path.join(cwd, 'tsconfig.yml');
+
+	log.info('Looking for tsconfig.yaml file...');
+	if (fs.existsSync(yamlFile)) return yamlFile;
+	log.info('Looking for tsconfig.yml file...');
+	if (fs.existsSync(ymlFile)) return ymlFile;
+
+	return null;
+}
+
+// Function to generate individual project's tsconfig.json file.
+function generateProjectTsConfig(
+	dir: string,
+	projectName: string,
+	project: ProjectConfig,
+	config: TsConfigYaml,
+) {
+	// Construct base options with overrides from specific configurations.
+	const baseOptions = {
+		...getBaseOptions(config),
+		...getSubprojectOptions(projectName, config),
+	};
+
+	// Create references array based on provided references in YAML.
+	const references =
+		project.references?.map((ref) => ({ path: `./${ref}` })) || [];
+
+	// Write out the generated configuration to a file.
+	writeTsConfigJson(path.join(dir, project.path, 'tsconfig.json'), {
+		...baseOptions,
+		references,
+	});
+}
+
+// Function to generate individual subproject's tsconfig.<subproject>.json file.
+function generateSubprojectTsConfig(
+	dir: string,
+	projectName: string,
+	subprojectName: string,
+	config: TsConfigYaml,
+) {
+	const baseOptions = getBaseOptions(config);
+
+	// Merge base options with specific subproject options.
+	const subProjectOptions = getSubprojectOptions(subprojectName, config);
+
+	// Construct final options object by merging base and specific options.
+	const finalOptions = { ...baseOptions, ...subProjectOptions };
+
+	// Write out the generated configuration to a file named after the sub-project.
+	writeTsConfigJson(
+		path.join(
+			dir,
+			config.projects[projectName].path,
+			`tsconfig.${subprojectName}.json`,
+		),
+		finalOptions,
+	);
+}
+
+// Helper function to get base options from global configuration options section.
+function getBaseOptions(config: TsConfigYaml): BaseOptions {
+	return config.options.base || {};
+}
+
+// Helper function to get specific sub-project options from global configuration section.
+function getSubprojectOptions(
+	subProjectKey: string,
+	config: TsConfigYaml,
+): SubprojectConfig {
+	return config.subprojects[subProjectKey] || {};
+}
+
+// Helper function to write JSON content into a .json file at specified path.
+function writeTsConfigJson(
+	filePath: string,
+	jsonContent: Record<string, unknown>,
+) {
+	log.debug('Ensuring directory exists:', filePath);
+	ensureDirectoryExists(filePath);
+
+	log.debug('Writing tsconfig to file:', filePath);
+	log.trace('With content:', jsonContent);
+	fs.writeFileSync(filePath, JSON.stringify(jsonContent, undefined, '\t'), {
+		encoding: 'utf8',
+		flag: 'w',
+	});
+}
+
+function ensureDirectoryExists(filePath: string) {
+	if (!path.isAbsolute(filePath)) {
+		throw new Error('Path must be absolute: ' + filePath);
+	}
+
+	const dirname = path.dirname(filePath);
+	if (fs.existsSync(dirname)) {
+		return true;
+	}
+	log.info('Creating directory:', dirname);
+	fs.mkdirSync(dirname, { recursive: true });
+}
+
+function toAbsolute(dir: string): string {
+	return path.isAbsolute(dir) ? dir : path.resolve(process.cwd(), dir);
+}
+
+if (process.argv.includes('watch')) {
+	const dir = process.argv[3];
+	chokidar
+		.watch(
+			[path.join(dir, 'tsconfig.yaml'), path.join(dir, 'tsconfig.yml')],
+			{ persistent: true },
+		)
+		.on('change', () => {
+			log.info('Detected changes in configuration files...');
+			generateTsConfigs(dir);
+		});
+} else {
+	const dir = process.argv[2];
+	generateTsConfigs(dir);
+}

@@ -1,1 +1,3 @@
 *.tsbuildinfo
+tsconfig-yaml/sample/acme/tsconfig.json
+tsconfig-yaml/sample/acme/tsconfig.*.json

@@ -1,0 +1,53 @@
+{
+	"name": "tsconfig-yaml",
+	"version": "1.0.0",
+	"description": "tsconfig.json in yaml",
+	"author": "Chris Haws",
+	"license": "MIT",
+	"keywords": [
+		"tsconfig",
+		"yaml",
+		"generator",
+		"typescript"
+	],
+	"bin": "dist/index.mjs",
+	"exports": {
+		".": {
+			"types": "./src/index.ts",
+			"import": "./dist/index.mjs",
+			"default": "./dist/index.js"
+		}
+	},
+	"publishConfig": {
+		"exports": {
+			".": {
+				"types": "./dist/index.d.ts",
+				"import": "./dist/index.mjs",
+				"default": "./dist/index.js"
+			}
+		}
+	},
+	"scripts": {
+		"dev": "pnpm run build --keep-names --watch --onSuccess \"node dist/index.js ./sample/\"",
+		"start": "node dist/index.js",
+		"build": "tsup src/index.ts -d=dist --format=esm,cjs  --sourcemap",
+		"build:prod": "pnpm run build --minify --experimental-dts",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"dependencies": {
+		"@types/node": "^20.11.17",
+		"chokidar": "^3.6.0",
+		"tsup": "^8.0.1",
+		"typescript": "^5.3.3",
+		"yaml": "^2.3.4"
+	},
+	"prettier": {
+		"semi": true,
+		"singleQuote": true,
+		"trailingComma": "all",
+		"printWidth": 80,
+		"useTabs": true,
+		"tabWidth": 4,
+		"endOfLine": "lf"
+	}
+}
