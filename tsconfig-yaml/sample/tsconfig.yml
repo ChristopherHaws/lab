@@ -1,21 +1,17 @@
 projects:
-    stories:
-        path: ./acme/stories
+    acme/stories:
         references: [shared, app1, app2]
-        subprojects: [types, web, mocks, tests, stories]
-    app1:
-        path: ./acme/app1
+        environments: [types, web, mocks, tests, stories]
+    acme/app1:
         references: [shared]
-        subprojects: [types, web, mocks, tests, stories]
-    app2:
-        path: ./acme/app2
+        environments: [types, web, mocks, tests, stories]
+    acme/app2:
         references: [shared]
-        subprojects: [types, web, mocks, tests, stories]
-    shared:
-        path: ./acme/shared
-        subprojects: [types, web, mocks, tests, stories]
+        environments: [types, web, mocks, tests, stories]
+    acme/shared:
+        environments: [types, web, mocks, tests, stories]
 
-subprojects:
+environments:
     types:
         include: ['src/**/*.types.{ts,tsx,mts}']
     web:

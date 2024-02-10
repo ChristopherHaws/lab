@@ -6,7 +6,7 @@ import { log } from './logger';
 import type {
 	TsConfigYaml,
 	ProjectConfig,
-	SubprojectConfig,
+	AspectConfig,
 	BaseOptions,
 } from './types';
 
@@ -36,19 +36,11 @@ function generateTsConfigs(dir: string) {
 			log.info('Generating tsconfig files for project:', projectName);
 			generateProjectTsConfig(dir, projectName, project, config);
 
-			// Generate tsconfigs for each subproject if any.
-			if (project.subprojects) {
-				for (const subproject of project.subprojects) {
-					log.debug(
-						'Generating tsconfig for subproject:',
-						subproject,
-					);
-					generateSubprojectTsConfig(
-						dir,
-						projectName,
-						subproject,
-						config,
-					);
+			// Generate tsconfigs for each aspect if any.
+			if (project.aspects) {
+				for (const aspect of project.aspects) {
+					log.debug('Generating tsconfig for aspect:', aspect);
+					generateaspectTsConfig(dir, projectName, aspect, config);
 				}
 			}
 		}
@@ -82,7 +74,7 @@ function generateProjectTsConfig(
 	// Construct base options with overrides from specific configurations.
 	const baseOptions = {
 		...getBaseOptions(config),
-		...getSubprojectOptions(projectName, config),
+		...getaspectOptions(projectName, config),
 	};
 
 	// Create references array based on provided references in YAML.
@@ -96,27 +88,27 @@ function generateProjectTsConfig(
 	});
 }
 
-// Function to generate individual subproject's tsconfig.<subproject>.json file.
-function generateSubprojectTsConfig(
+// Function to generate individual aspect's tsconfig.<aspect>.json file.
+function generateaspectTsConfig(
 	dir: string,
 	projectName: string,
-	subprojectName: string,
+	aspectName: string,
 	config: TsConfigYaml,
 ) {
 	const baseOptions = getBaseOptions(config);
 
-	// Merge base options with specific subproject options.
-	const subProjectOptions = getSubprojectOptions(subprojectName, config);
+	// Merge base options with specific aspect options.
+	const aspectOptions = getaspectOptions(aspectName, config);
 
 	// Construct final options object by merging base and specific options.
-	const finalOptions = { ...baseOptions, ...subProjectOptions };
+	const finalOptions = { ...baseOptions, ...aspectOptions };
 
 	// Write out the generated configuration to a file named after the sub-project.
 	writeTsConfigJson(
 		path.join(
 			dir,
 			config.projects[projectName].path,
-			`tsconfig.${subprojectName}.json`,
+			`tsconfig.${aspectName}.json`,
 		),
 		finalOptions,
 	);
@@ -128,11 +120,11 @@ function getBaseOptions(config: TsConfigYaml): BaseOptions {
 }
 
 // Helper function to get specific sub-project options from global configuration section.
-function getSubprojectOptions(
-	subProjectKey: string,
+function getaspectOptions(
+	aspectKey: string,
 	config: TsConfigYaml,
-): SubprojectConfig {
-	return config.subprojects[subProjectKey] || {};
+): AspectConfig {
+	return config.aspects[aspectKey] || {};
 }
 
 // Helper function to write JSON content into a .json file at specified path.
