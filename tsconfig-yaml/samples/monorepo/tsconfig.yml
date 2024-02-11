@@ -34,7 +34,7 @@ environments:
         references: [types, web, mocks]
         include: ['src/**/*.stories.{ts,tsx,mts}']
 
-options:
+configs:
     base:
         outDir: './dist'
         target: 'module'

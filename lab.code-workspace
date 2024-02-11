@@ -5,6 +5,7 @@
 		{ "path": "vite-01-monorepo-multiproj" },
 		{ "path": "vite-02-monorepo-monoproj" },
 		{ "path": "tsconfig-gen" },
+		{ "path": "tsconfig-pkl" },
 		{ "path": "tsconfig-yaml" }
 	],
 	"settings": {
@@ -14,6 +15,7 @@
 			"vite-01-monorepo-multiproj": true,
 			"vite-02-monorepo-monoproj": true,
 			"tsconfig-gen": true,
+			"tsconfig-pkl": true,
 			"tsconfig-yaml": true
 		},
 		"files.associations": {

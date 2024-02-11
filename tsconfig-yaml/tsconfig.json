@@ -21,6 +21,12 @@
 		"noUnusedLocals": true,
 		"noUnusedParameters": true,
 		"noFallthroughCasesInSwitch": true,
-		"strictNullChecks": true
+		"strictNullChecks": true,
+		"useUnknownInCatchVariables": true,
+		"allowUmdGlobalAccess": false,
+
+		"paths": {
+			"@/*": ["./src/*/index.ts", "./src/*/index.mts"]
+		}
 	}
 }

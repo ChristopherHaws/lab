@@ -10,33 +10,40 @@
 		"generator",
 		"typescript"
 	],
-	"bin": "dist/index.mjs",
+	"type": "module",
+	"bin": "./dist/cli/index.mjs",
 	"exports": {
-		".": {
-			"types": "./src/index.ts",
-			"import": "./dist/index.mjs",
-			"default": "./dist/index.js"
+		"./*": {
+			"types": "./src/*/index.ts",
+			"require": "./dist/*/index.cjs",
+			"node": "./dist/*/index.cjs",
+			"default": "./dist/*/index.mjs"
 		}
 	},
 	"publishConfig": {
 		"exports": {
-			".": {
-				"types": "./dist/index.d.ts",
-				"import": "./dist/index.mjs",
-				"default": "./dist/index.js"
+			"./*": {
+				"types": "./dist/*/index.d.ts",
+				"require": "./dist/*/index.cjs",
+				"node": "./dist/*/index.cjs",
+				"default": "./dist/*/index.mjs"
 			}
 		}
 	},
 	"scripts": {
-		"dev": "pnpm run build --keep-names --watch --onSuccess \"node dist/index.js ./sample/\"",
-		"start": "node dist/index.js",
-		"build": "tsup src/index.ts -d=dist --format=esm,cjs  --sourcemap",
-		"build:prod": "pnpm run build --minify --experimental-dts",
+		"dev": "tsup --config tsup.config.cts --watch --onSuccess \"pnpm start\"",
+		"start": "pnpm node dist/cli/index.mjs generate ./samples/monorepo --dry-run",
+		"build": "tsup",
+		"build:ci": "tsup --env.NODE_ENV ci",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"dependencies": {
+		"@commander-js/extra-typings": "^12.0.0",
+		"@types/braces": "^3.0.4",
 		"@types/node": "^20.11.17",
+		"braces": "^3.0.2",
 		"chokidar": "^3.6.0",
+		"commander": "^12.0.0",
 		"tsup": "^8.0.1",
 		"typescript": "^5.3.3",
 		"yaml": "^2.3.4"
@@ -45,9 +52,12 @@
 		"semi": true,
 		"singleQuote": true,
 		"trailingComma": "all",
-		"printWidth": 80,
+		"printWidth": 100,
 		"useTabs": true,
 		"tabWidth": 4,
 		"endOfLine": "lf"
+	},
+	"devDependencies": {
+		"@microsoft/api-extractor": "^7.40.1"
 	}
 }
