@@ -1,6 +1,7 @@
 {
 	"folders": [
 		{ "path": ".", "name": "root" },
+		{ "path": "ecmapad" },
 		{ "path": "esbuild-multiapp" },
 		{ "path": "rubber-ducky" },
 		{ "path": "tsconfig-gen" },
@@ -8,18 +9,19 @@
 		{ "path": "tsconfig-yaml" },
 		{ "name": "tsconfig-yaml-samples", "path": "./tsconfig-yaml/samples" },
 		{ "path": "vite-01-monorepo-multiproj" },
-		{ "path": "vite-02-monorepo-monoproj" },
+		{ "path": "vite-02-monorepo-monoproj" }
 	],
 	"settings": {
 		// Exclude the project folders from the root workspace folder
 		"files.exclude": {
+			"ecmapad": true,
 			"esbuild-multiapp": true,
 			"rubber-ducky": true,
 			"tsconfig-gen": true,
 			"tsconfig-pkl": true,
 			"tsconfig-yaml": true,
 			"vite-01-monorepo-multiproj": true,
-			"vite-02-monorepo-monoproj": true,
+			"vite-02-monorepo-monoproj": true
 		},
 		"files.associations": {
 			// Most of the tools support comments in JSON files. If a specific file
@@ -39,10 +41,10 @@
 		"prettier.useTabs": true,
 		"editor.defaultFormatter": "esbenp.prettier-vscode",
 		"[javascript]": {
-			"editor.defaultFormatter": "esbenp.prettier-vscode",
+			"editor.defaultFormatter": "esbenp.prettier-vscode"
 		},
 		"[json][jsonc]": {
-			"editor.defaultFormatter": "esbenp.prettier-vscode",
+			"editor.defaultFormatter": "esbenp.prettier-vscode"
 		}
 	}
 }
