@@ -26,6 +26,7 @@
 		"allowUmdGlobalAccess": false,
 
 		"paths": {
+			"@/utils/*": ["./src/utils/*.ts", "./src/utils/*.mts"],
 			"@/*": ["./src/*/index.ts", "./src/*/index.mts"]
 		}
 	}

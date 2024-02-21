@@ -1,41 +1,21 @@
-Implement this function:
-
-```ts
-export const generateConfig =
-	(fs: FileSystem, logger: Logger) =>
-	(config: TsConfigYaml, outputPath: string): void => {
-		// Implementation goes here...
-		console.log(fs, logger, config, outputPath);
-	};
-
-export type Project = {
-	references: string[];
-	environments: string[];
-};
-
-export type Environment = {
-	extends?: string[];
-	references?: string[];
-	include: string[];
-	types?: string[];
-};
-
-export type Options = {
-	outDir?: string;
-	target?: string;
-	module?: string;
-	lib?: string[];
-	jsx?: string;
-	strict?: boolean;
-	types?: string[];
-};
-
-export type TsConfigYaml = {
-	projects: Record<string, Project>;
-	environments: Record<string, Environment>;
-	configs: Record<string, Options>;
-};
-```
+Implement a library and cli tool which meets the following requirements:
+- Uses ESModules and TypeScript
+- Reads a single `tsconfig.yaml` file and generates the corresponding `tsconfig.json` files for each project.
+- Each project should have its own solution-style `tsconfig.json` file as well as `tsconfig.<environment_name>.json` for every environment.
+- The config settings should be deep merged and the order of precedence should be: `configs` -> `environment` -> `project`
+- use `Braces.expand(pattern: string): string[]` to convert the bash style globs into standard globs since tsconfig.json doesnt support them. For example `**/*.{types,mocks,tests,stories}.{ts,tsx,mts}` should become:
+  - `**/*.types.ts`
+  - `**/*.types.tsx`
+  - `**/*.types.mts`
+  - `**/*.mocks.ts`
+  - `**/*.mocks.tsx`
+  - `**/*.mocks.mts`
+  - `**/*.tests.ts`
+  - `**/*.tests.tsx`
+  - `**/*.tests.mts`
+  - `**/*.stories.ts`
+  - `**/*.stories.tsx`
+  - `**/*.stories.mts`
 
 Here is an example `tsconfig.yaml` file:
 
@@ -122,7 +102,7 @@ workspace
 │   │   ├── tsconfig.types.json
 │   │   ├── tsconfig.web.json
 │   │   ├── tsconfig.mocks.json
-│   │   c── tsconfig.tests.json
+│   │   ├── tsconfig.tests.json
 │   │   └── tsconfig.stories.json
 │   └── shared
 │   │   ├── tsconfig.json
@@ -134,24 +114,6 @@ workspace
 ├── tsconfig.base.json
 └── tsconfig.json
 ```
-
-You will need to expand the braces in globs since tsconfig.json doesnt support them. For example `**/*.{types,mocks,tests,stories}.{ts,tsx,mts}` should become:
-- `**/*.types.ts`
-- `**/*.types.tsx`
-- `**/*.types.mts`
-- `**/*.mocks.ts`
-- `**/*.mocks.tsx`
-- `**/*.mocks.mts`
-- `**/*.tests.ts`
-- `**/*.tests.tsx`
-- `**/*.tests.mts`
-- `**/*.stories.ts`
-- `**/*.stories.tsx`
-- `**/*.stories.mts`
-
-
-
-
 
 
 # Response

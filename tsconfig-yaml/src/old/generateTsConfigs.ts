@@ -2,7 +2,7 @@ import * as fs from 'node:fs';
 import * as path from 'node:path';
 import { parseDocument } from 'yaml';
 import chokidar from 'chokidar';
-import { consoleLogger } from '../utils/logger';
+import { consoleLogger } from '@/utils/logger';
 import type { TsConfigYaml, ProjectConfig, AspectConfig, BaseOptions } from './types';
 
 // Main function to handle reading and generating tsconfig files.
@@ -136,6 +136,7 @@ function ensureDirectoryExists(filePath: string) {
 	if (fs.existsSync(dirname)) {
 		return true;
 	}
+
 	consoleLogger.info('Creating directory:', dirname);
 	fs.mkdirSync(dirname, { recursive: true });
 }

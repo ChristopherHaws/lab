@@ -13,6 +13,12 @@
 	"type": "module",
 	"bin": "./dist/cli/index.mjs",
 	"exports": {
+		"./utils/*": {
+			"types": "./src/utils/*.ts",
+			"require": "./dist/utils/*.cjs",
+			"node": "./dist/utils/*.cjs",
+			"default": "./dist/utils/*.mjs"
+		},
 		"./*": {
 			"types": "./src/*/index.ts",
 			"require": "./dist/*/index.cjs",
@@ -32,7 +38,8 @@
 	},
 	"scripts": {
 		"dev": "tsup --config tsup.config.cts --watch --onSuccess \"pnpm start\"",
-		"start": "pnpm node dist/cli/index.mjs generate ./samples/monorepo --dry-run",
+		"start": "pnpm node dist/cli/index.mjs generate ./samples/monorepo",
+		"start:dryrun": "pnpm start -- --dryrun",
 		"build": "tsup",
 		"build:ci": "tsup --env.NODE_ENV ci",
 		"test": "echo \"Error: no test specified\" && exit 1"
@@ -40,7 +47,6 @@
 	"dependencies": {
 		"@commander-js/extra-typings": "^12.0.0",
 		"@types/braces": "^3.0.4",
-		"@types/node": "^20.11.17",
 		"braces": "^3.0.2",
 		"chokidar": "^3.6.0",
 		"commander": "^12.0.0",
@@ -58,6 +64,7 @@
 		"endOfLine": "lf"
 	},
 	"devDependencies": {
-		"@microsoft/api-extractor": "^7.40.1"
+		"@microsoft/api-extractor": "^7.40.1",
+		"@types/node": "^20.11.17"
 	}
 }

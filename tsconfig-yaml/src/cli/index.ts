@@ -1,8 +1,8 @@
 #!/bin/env node
 import { program } from '@commander-js/extra-typings';
 import { createTsConfigGenerator } from '@/core';
-import { dryRunFileSystem, nodeFileSystem } from '../utils/fs';
-import { consoleLogger } from '../utils/logger';
+import { dryRunFileSystem, nodeFileSystem } from '@/utils/fs';
+import { consoleLogger } from '@/utils/logger';
 import { TsConfigYaml } from '../core/types';
 import yaml from 'yaml';
 import path from 'path';
@@ -26,14 +26,15 @@ program
 			dir = path.dirname(dir);
 		}
 
-		consoleLogger.info('Generating', dir, 'with options:', options);
-		const fileSystem = options.dryRun ? dryRunFileSystem : nodeFileSystem;
-		const tsconfigGenerator = createTsConfigGenerator(fileSystem, consoleLogger);
+		consoleLogger.info('Generating tsconfig files in:', dir);
+		consoleLogger.debug('  with options:', options);
 
+		const fileSystem = options.dryRun ? dryRunFileSystem : nodeFileSystem;
 		const tsconfigYamlContent = fileSystem.readFileSync(path.join(dir, 'tsconfig.yml'));
 		const tsconfigYaml = yaml.parse(tsconfigYamlContent) as TsConfigYaml;
-		const tsconfigs = await tsconfigGenerator(tsconfigYaml, dir);
-		consoleLogger.debug('Generated tsconfigs:', tsconfigs);
+
+		const generateTsconfigFiles = createTsConfigGenerator(fileSystem, consoleLogger);
+		await generateTsconfigFiles(tsconfigYaml, dir);
 	});
 
 program

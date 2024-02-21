@@ -1,0 +1,27 @@
+{
+	"name": "rubber-ducky",
+	"version": "1.0.0",
+	"description": "",
+	"type": "module",
+	"main": "index.js",
+	"scripts": {
+		"start": "node --loader ts-node/esm --no-warnings src/index.ts",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"@langchain/community": "^0.0.30",
+		"@langchain/core": "^0.1.30",
+		"@langchain/openai": "^0.0.14",
+		"@supabase/supabase-js": "^2.39.6",
+		"dotenv": "^16.4.4",
+		"langchain": "^0.1.20"
+	},
+	"devDependencies": {
+		"@types/node": "^20.11.19",
+		"ts-node": "^10.9.2"
+	},
+	"ts-node": {}
+}

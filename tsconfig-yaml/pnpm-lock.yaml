@@ -11,9 +11,6 @@ dependencies:
   '@types/braces':
     specifier: ^3.0.4
     version: 3.0.4
-  '@types/node':
-    specifier: ^20.11.17
-    version: 20.11.17
   braces:
     specifier: ^3.0.2
     version: 3.0.2
@@ -37,6 +34,9 @@ devDependencies:
   '@microsoft/api-extractor':
     specifier: ^7.40.1
     version: 7.40.1(@types/node@20.11.17)
+  '@types/node':
+    specifier: ^20.11.17
+    version: 20.11.17
 
 packages:
 

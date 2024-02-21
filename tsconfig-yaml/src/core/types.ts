@@ -1,3 +1,5 @@
+import type { CompilerOptions, ProjectReference } from 'typescript';
+
 // File: src/types.ts
 export type Project = {
 	references: string[];
@@ -11,25 +13,16 @@ export type Environment = {
 	types?: string[];
 };
 
-export type TsConfig = {
-	extends?: string[];
-	references?: string[];
-	include: string[];
-	complierOptions: TsConfigCompilerOptions;
-};
-
-export type TsConfigCompilerOptions = {
-	outDir?: string;
-	target?: string;
-	module?: string;
-	lib?: string[];
-	jsx?: string;
-	strict?: boolean;
-	types?: string[];
-};
+export interface TsConfigJson {
+	compilerOptions: CompilerOptions;
+	include?: string[];
+	exclude?: string[];
+	files?: string[];
+	references?: ProjectReference[];
+}
 
 export type TsConfigYaml = {
 	projects: Record<string, Project>;
 	environments: Record<string, Environment>;
-	options: Record<string, TsConfigCompilerOptions>;
+	options: Record<string, CompilerOptions>;
 };

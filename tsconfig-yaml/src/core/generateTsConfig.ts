@@ -1,5 +1,5 @@
 import type { TsConfigYaml } from './types';
-import type { FileSystem, Logger } from '../utils/types';
+import type { FileSystem, Logger } from '@/utils/types';
 import path from 'path';
 import braces from 'braces';
 
