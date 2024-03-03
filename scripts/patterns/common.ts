@@ -20,27 +20,41 @@ const order = {
 };
 
 type Order = typeof order;
-type OrderPaths = Paths<Order>;
-type OrderPathStrings = PathStrings<Order>;
+type OrderPaths = ObjectPaths<Order>;
+type OrderPathStrings = ObjectPathStrings<Order>;
 
-type Paths<T> = T extends any[]
+/**
+ * Generates a union of all possible paths through an object.
+ * @example
+ * type ExamplePaths = ObjectPaths<{a:{b:string}, c:number}>;
+ * // Result would be ["a", "a.b", "c"]
+ */
+type ObjectPaths<T> = T extends Array<any>
 	? never
 	: T extends object
-	? {
-			[Key in keyof T]: [Key] | [Key, ...Paths<T[Key]>];
-	  }[keyof T]
+	? { [K in keyof T]: [K] | [K, ...ObjectPaths<T[K]>] }[keyof T]
 	: never;
 
-type ToString<T extends Stringable> = T extends string ? T : `${T}`;
+/**
+ * Converts types to string representation.
+ */
+type ToString<T> = T extends string | number | bigint | boolean ? `${T}` : never;
 
-type Stringable = string | number | bigint | boolean;
-
-type Join<T extends any[], D extends string> = T extends []
+/**
+ * Joins an array of strings or other convertible types into a single string separated by a delimiter.
+ * @example
+ * type JoinedString = Join<['a','b','c'], '.'>;
+ * // Result would be "a.b.c"
+ */
+type Join<T, D extends string> = T extends []
 	? never
 	: T extends [infer F]
-	? ToString<Extract<F, Stringable>>
+	? ToString<F>
 	: T extends [infer F, ...infer R]
-	? `${ToString<Extract<F, Stringable>>}${D}${Join<Extract<R, any[]>, D>}`
-	: never;
+	? `${ToString<F>}${D}${Join<R, D>}`
+	: string;
 
-type PathStrings<T> = Join<Paths<T>, '.'>;
+/**
+ * Generates strings representing each path through an object separated by dots.
+ */
+type ObjectPathStrings<T> = Join<ObjectPaths<T>, '.'>;
