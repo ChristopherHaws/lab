@@ -1,6 +1,7 @@
 {
 	"folders": [
 		{ "path": ".", "name": "root" },
+		{ "path": "scripts" },
 		{ "path": "ecmapad" },
 		{ "path": "esbuild-multiapp" },
 		{ "path": "rubber-ducky" },
@@ -14,6 +15,7 @@
 	"settings": {
 		// Exclude the project folders from the root workspace folder
 		"files.exclude": {
+			"scripts": true,
 			"ecmapad": true,
 			"esbuild-multiapp": true,
 			"rubber-ducky": true,
